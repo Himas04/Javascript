@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet consectetur.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, molestias?</p>
+
+    <button onclick="changeColour()">Click ME!</button>
+    <script>
+        function changeColour(){
+            let a=document.querySelectorAll("p")
+            for(let i=0; i<a.length; i++){
+                a[i].style.color="green"
+            }
+        }
+    </script>
+</body>
+</html>

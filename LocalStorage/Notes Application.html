@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Application</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(90deg,rgb(234, 194, 194),rgb(118, 118, 226),rgb(112, 237, 112));
+          background-size: 300% 300%;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        align-items: flex-start;
+        min-height: 100vh;
+        animation: bgMove 8s linear infinite;
+      }
+      @keyframes bgMove{
+       0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+      }
+      h3 {
+        color: royalblue;
+        margin-bottom: 8px;
+      }
+
+      div {
+    width: 450px;
+    padding: 20px;
+    background: white;
+    border: 3px solid rgb(225, 129, 65);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(19, 110, 220);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px rgb(7, 63, 230);
+    }
+    to {
+        box-shadow: 0 0 25px rgb(255, 183, 0);
+    }
+}
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: royalblue;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      #output p {
+        background: #f8f8f8;
+        padding: 10px;
+        border-left: 5px solid royalblue;
+        border-radius: 5px;
+        margin-bottom: 8px;
+      }
+
+      button {
+        padding: 8px 15px;
+        background: crimson;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 15px;
+        animation: pulse 1.5s infinite;
+      }
+      @keyframes pulse{
+        0%{
+            transform: scaleX(1);
+        }
+        50%{
+            transform:scaleX(1.1) ;
+        }
+        100%{
+            transform: scaleX(1);
+        }
+      }
+
+      button:hover {
+        background: darkred;
+      }
+
+      hr {
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        height: 5px;
+        background: linear-gradient(90deg,red,blue,green);
+        background-size: 300% 100%;
+        animation: hrMove 3s linear infinite;
+      }
+      @keyframes hrMove{
+        from{
+            background-position: 0;
+        }
+        to{
+            background-position: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input id="title" type="text" placeholder="Enter Heading" />
+      <input id="note" type="text" placeholder="Enter Your Notes here...." />
+      <h2>Saved Data</h2>
+      <p id="output"></p>
+    </div>
+    <script>
+      const titleInput = document.getElementById("title");
+      const noteInput = document.getElementById("note");
+      const output = document.getElementById("output");
+
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+      noteInput.addEventListener("change", function () {
+        const note = {
+          id: Date.now(),
+          title: titleInput.value,
+          text: noteInput.value,
+        };
+        notes.push(note);
+        localStorage.setItem("notes", JSON.stringify(notes));
+        titleInput.value = "";
+        noteInput.value = "";
+        display();
+      });
+      function display() {
+        let data = "";
+
+        for (let i = 0; i < notes.length; i++) {
+          data += `
+          <h3>${notes[i].title || "No Title"}</h3>
+            <p> ${notes[i].text}</p>
+            <button onclick="removePara(${notes[i].id})">Delete</button>
+            <hr>
+        `;
+        }
+        document.getElementById("output").innerHTML = data;
+      }
+      function removePara(id) {
+        notes = notes.filter((note) => note.id !== id);
+        localStorage.setItem("notes", JSON.stringify(notes));
+        display();
+      }
+      display();
+    </script>
+  </body>
+</html>

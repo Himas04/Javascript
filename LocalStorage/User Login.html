@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+  </head>
+  <body>
+    <div>
+      <h1>Please LogIn here..</h1>
+
+      <input id="username" type="text" placeholder="enter username.." />
+      <input id="password" type="password" placeholder="enter password.." />
+
+      <button onclick="login()">Login</button>
+
+      <h3 id="msg"></h3>
+    </div>
+
+  <script>
+    function login() {
+        let userName = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        if (userName === "" || password === "") {
+            alert("Please enter username and password");
+            return;
+        }
+
+        // Save username
+        sessionStorage.setItem("username", userName);
+
+        // Clear inputs
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+
+        showMessage();
+    }
+
+    function showMessage() {
+        let user = sessionStorage.getItem("username");
+
+        if (user !== null && user !== "") {
+            document.getElementById("msg").innerHTML =
+                "Welcome " + user + " 👋";
+        }
+    }
+
+    showMessage();
+</script>
+  </body>
+</html>

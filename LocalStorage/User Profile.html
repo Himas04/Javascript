@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+</head>
+
+<body>
+    <form>
+        <input id="name" type="name" placeholder="Enter Name.." />
+        <input id="email" type="email" placeholder="Enter Email.." />
+        <input id="tel" type="tel" placeholder="Enter Telephone" />
+        <button onclick="studentDetails()">Save</button>
+    </form>
+    <h2>Data:</h2>
+    <p id="output"></p>
+    <script>
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const telInput = document.getElementById("tel");
+
+        let student = JSON.parse(localStorage.getItem("student")) || [];
+
+        function studentDetails() {
+            const studentInfo = {
+                id: Date.now(),
+                name: nameInput.value,
+                email: emailInput.value,
+                tel: telInput.value,
+            };
+            student.push(studentInfo);
+            alert("ThankYOU")
+
+            localStorage.setItem("student", JSON.stringify(student));
+
+            nameInput.value = "";
+            emailInput.value = "";
+            telInput.value = "";
+            display();
+        }
+        function display() {
+            let output = "";
+
+            for (let i = 0; i < student.length; i++) {
+                output += `Name:${student[i].name}<br>
+                Email:${student[i].email}<br>
+                Telephone:${student[i].tel}<br><hr>`;
+            }
+            document.getElementById("output").innerHTML = output;
+
+        }
+        display();
+    </script>
+</body>
+
+</html>

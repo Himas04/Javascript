@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task7</title>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <img src="assets/wp11639451.jpg" alt="tom&jerry"><br>
+    <button id="btn">Show Image</button>
+    <script>
+        let img=document.querySelector("img")
+        let btn=document.getElementById("btn")
+
+        // img.addEventListener("click",()=>{
+        //     img.style.display="none"
+        // })
+
+        // btn.addEventListener("click",()=>{
+        //     img.style.display="block"
+        // })
+
+        btn.addEventListener("click",()=>{
+            if(img.style.display==="none"){
+                img.style.display="block"
+                btn.innerHTML="Hide Image"
+            }
+            else{
+                img.style.display="none"
+                btn.innerHTML="Show Image"
+            }
+        })
+    </script>
+</body>
+</html>

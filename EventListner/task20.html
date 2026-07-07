@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task20</title>
+</head>
+<body>
+    <input type="password" placeholder="Enter password" maxlength="8">
+    <p>Count OF Password:<span id="password"></span></p>
+
+    <script>
+        let input=document.querySelector("input")
+        let password=document.getElementById("password")
+
+        input.addEventListener("input",()=>{
+            password.innerHTML=input.value.length
+        })
+    </script>
+</body>
+</html>

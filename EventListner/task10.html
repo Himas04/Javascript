@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task9</title>
+   <style>
+     button,p{
+     cursor: pointer;   
+    }
+   </style>
+</head>
+<body>
+    <button id="btn">Show Date&Time</button>
+    <p id="date"></p>
+
+    <script>
+        let btn=document.getElementById("btn")
+        let datetime=document.getElementById("date")
+
+        btn.addEventListener("click",()=>{
+            let now=new Date()
+
+            datetime.innerHTML=now
+            btn.style.display="none"
+            datetime.style.display="block"
+        })
+        datetime.addEventListener("click",()=>{
+            datetime.style.display="none"
+            btn.style.display="block"
+        })
+    </script>
+</body>
+</html>

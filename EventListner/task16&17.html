@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task16&17</title>
+</head>
+
+<body>
+
+    <h3>Select Country</h3>
+
+    <select id="country">
+        <option value="">Select Country</option>
+        <option value="Sri Lanka">Sri Lanka</option>
+        <option value="India">India</option>
+        <option value="Japan">Japan</option>
+        <option value="USA">USA</option>
+    </select>
+
+    <p id="countryOutput"></p>
+
+
+    <h3>Select Gender</h3>
+
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+
+    <p id="genderOutput"></p>
+
+
+    <script>
+
+        let country = document.getElementById("country");
+        let countryOutput = document.getElementById("countryOutput");
+
+        let genderOutput = document.getElementById("genderOutput");
+
+
+        country.addEventListener("change", () => {
+            countryOutput.innerHTML = "Selected Country: " + country.value;
+        });
+
+
+        let genders = document.querySelectorAll("input[name='gender']");
+
+        genders.forEach((gender) => {
+
+            gender.addEventListener("change", () => {
+                genderOutput.innerHTML = "Selected Gender: " + gender.value;
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

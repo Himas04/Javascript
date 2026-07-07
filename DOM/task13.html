@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task13</title>
+</head>
+<body>
+    <input type="number" id="evod" placeholder="Enter a value">
+
+    <button onclick="evenOrOdd()">Click ME!</button>
+    <p id="output"></p>
+    <script>
+        function evenOrOdd(){
+            let num=document.getElementById("evod").value 
+            if(num%2==0){
+                document.getElementById("output").textContent="Even"
+            }
+            else{
+               document.getElementById("output").textContent="Odd"
+            }
+        }
+    </script>
+</body>
+</html>

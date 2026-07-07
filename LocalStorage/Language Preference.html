@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Preference</title>
+</head>
+<body>
+    <h1>Language Preference</h1>
+    <select id="languageSelect">
+        <option >English</option>
+        <option>Tamil</option>
+        <option >Sinhala</option>
+        <option>Hindi</option>
+    </select>
+    <h3>Your selected language is: <span id="output"></span></h3>
+    <script>
+        const language=document.getElementById("languageSelect")
+        const output=document.getElementById("output")
+
+        let savedLanguage=JSON.parse(localStorage.getItem("language"))
+
+        if(savedLanguage){
+            language.value=savedLanguage
+            output.innerHTML=savedLanguage
+        }
+        language.addEventListener("change",function(){
+            localStorage.setItem("language",JSON.stringify(language.value))
+            output.innerHTML=language.value
+        })
+    </script>
+</body>
+</html>

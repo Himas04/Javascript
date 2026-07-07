@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: wheat;
+        }
+        button{
+            margin: 25%;
+            padding: 10px;
+            border-radius: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">Click ME</button>
+
+    <script>
+        let btn=document.getElementById("btn")
+
+        btn.addEventListener("click",function(){
+            console.log("BUTTON CLICKED")
+            alert("BUTTON CLICKED")
+        })
+    </script>
+</body>
+</html>

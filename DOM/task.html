@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+
+    <div>
+        <h1>CM To MM Converter</h1>
+        <input id="input" type="text" placeholder="Enter Value">
+        <br>
+        <button onclick="mmTOcm()">Covert To Millimeter</button>
+        <p id="output"></p>
+    </div>
+    <script>
+       function mmTOcm(){
+        const a = Number(document.getElementById('input').value);
+        const mm = a * 10;
+        document.getElementById("output").textContent = mm+"mm";
+       }
+    </script>
+
+</body>
+
+</html>

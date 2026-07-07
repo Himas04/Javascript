@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task19</title>
+</head>
+<body>
+    <input type="number" placeholder="Enter Your Marks" id="mark">
+    <button onclick="checkResults()">Click ME to Check</button>
+    <h2 id="output"></h2>
+    <script>
+        function checkResults(){
+            let a=document.getElementById("mark").value 
+            if(a>=65){
+                document.getElementById("output").textContent="Congrats Your Passed the exam!!!!"
+            }
+            else{
+                document.getElementById("output").textContent="You Failed..Do your best Again Thank YOU!"
+            }
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <h1>Counter App</h1>
+
+  <div id="counts">0</div>
+
+  <button onclick="increase()">Increase</button>
+  <button onclick="decrease()">Decrease</button>
+  <button onclick="reset()">Reset</button>
+  <script>
+    let count=JSON.parse(localStorage.getItem("count")) || 0
+
+    function update(){
+        document.getElementById("counts").innerText=count
+        localStorage.setItem("count",count)
+    }
+    function increase(){
+        count++
+        update()
+    }
+    function decrease(){
+        count--
+        update()
+    }
+    function reset(){
+        count=0
+        update()
+    }
+  </script>
+    
+</body>
+</html>

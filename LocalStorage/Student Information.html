@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Form</title>
+  </head>
+  <body>
+    <h2>Student Form</h2>
+
+    <input id="name" placeholder="Name" /><br /><br />
+    <input id="age" placeholder="Age" /><br /><br />
+    <input id="course" placeholder="Course" /><br /><br />
+
+    <button onclick="saveData()">Save</button>
+
+    <h3>Saved Data</h3>
+    <div id="output"></div>
+
+    <script>
+      const name = document.getElementById("name");
+      const age = document.getElementById("age");
+      const course = document.getElementById("course");
+
+      const students = JSON.parse(localStorage.getItem("students")) || [];
+      function saveData() {
+        let student = {
+          id: Date.now(),
+          name: name.value,
+          age: age.value,
+          course: course.value,
+        };
+        students.push(student);
+        localStorage.setItem("students", JSON.stringify(students));
+
+        //Clear After click Button
+        name.value = "";
+        age.value = "";
+        course.value = "";
+        
+        displayStudents();
+      }
+
+      function displayStudents() {
+        let output = "";
+
+        for (let i = 0; i < students.length; i++) {
+          output += `Name:${students[i].name}<br>
+            Age:${students[i].age}<br>
+            Course:${students[i].course}<br><hr>`;
+        }
+
+        document.getElementById("output").innerHTML = output;
+      }
+      displayStudents();
+    </script>
+  </body>
+</html>

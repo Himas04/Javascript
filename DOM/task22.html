@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add To Card</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      .container {
+        display: flex;
+        justify-content: space-between;
+        border: none;
+        background-color: wheat;
+        padding: 20px 100px;
+      }
+      .card {
+        display: block;
+        border: none;
+        border-radius: 5px;
+        background-color: blueviolet;
+        padding: 10px;
+        color: rgb(201, 192, 16);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="product">
+      <div class="card">
+        <h2>laptop</h2>
+        <p>Rs190000</p>
+        <button type="button" aria-label="Add to cart" onclick="addToCart('laptop', 190000)">
+          <i class="fa-solid fa-cart-arrow-down"></i>
+        </button>
+      </div>
+      <div class="card">
+        <h2>Mouse</h2>
+        <p>Rs1900</p>
+        <button type="button" aria-label="Add to cart" onclick="addToCart('Mouse', 1900)">
+          <i class="fa-solid fa-cart-arrow-down"></i>
+        </button>
+      </div>
+
+      <div class="card">
+        <h2>KeyBoard</h2>
+        <p>Rs4500</p>
+        <button type="button" aria-label="Add to cart" onclick="addToCart('Keyboard', 4500)">
+          <i class="fa-solid fa-cart-arrow-down"></i>
+        </button>
+      </div>
+
+    </div>
+    
+    <h3>Cart</h3>
+    <ul id="output"></ul>
+    <script>
+      const output = document.getElementById("output");
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function addToCart(product, price) {
+        const item = {
+          id: Date.now(),
+          product,
+          price
+        };
+
+        
+
+        cart.push(item);
+        localStorage.setItem("cart", JSON.stringify(cart))
+        
+        showCart();
+      }
+
+      function showCart() {
+        output.innerHTML = "";
+
+        if (cart.length === 0) {
+          output.innerHTML = "<li>No items in cart</li>";
+          return;
+        }
+
+        cart.forEach((item) => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            ${item.product} - Rs${item.price} 
+             <button type="button" onclick="removeItem(${item.id})">Remove</button>
+          `;
+          output.appendChild(li);
+        });
+      }
+
+      function removeItem(id) {
+        cart = cart.filter((item) => item.id !== id);
+
+        showCart();
+      }
+      showCart();
+    </script>
+  </body>
+</html>

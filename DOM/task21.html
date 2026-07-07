@@ -1,0 +1,78 @@
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h2>To-Do List</h2>
+
+    <input type="text" id="task" placeholder="Enter a task" />
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="output"></ul>
+
+    <script>
+      function addTask() {
+        let input = document.getElementById("task").value;
+        if (input === "") {
+          alert("Please Enter a Task!!!");
+          return;
+        }
+        let li = document.createElement("li");
+      li.innerHTML = `
+        <input type="checkbox">${input}`;
+      document.getElementById("output").appendChild(li);
+      document.getElementById("task").value=""
+      }
+      
+    </script>
+  </body>
+</html> -->
+
+<!doctype html>
+<html>
+
+<body>
+    <h2>To-Do List</h2>
+
+    <input type="text" id="task" />
+
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="output"></ul>
+
+    <script>
+        let tasks = [];
+
+        function addTask() {
+            let input = document.getElementById("task").value;
+
+            if (input === "") {
+                alert("Please enter a task");
+
+                return;
+            }
+
+            tasks.push(input);
+
+            let result = "";
+
+            for (let i = 0; i < tasks.length; i++) {
+                result += `
+        <li>
+            <input type="checkbox">
+            ${tasks[i]}
+        </li>
+        `;
+            }
+
+            document.getElementById("output").innerHTML = result;
+
+            document.getElementById("task").value = " ";
+        }
+    </script>
+</body>
+
+</html>

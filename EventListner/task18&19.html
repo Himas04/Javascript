@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task18</title>
+</head>
+<body>
+    <input type="checkbox">
+    <label>I agree to terms and condition</label>
+
+    <p id="message"></p>
+    <button id="btn" disabled>Submit</button>
+
+    <script>
+        let checkbox= document.querySelector("input")
+        let message=document.getElementById("message")
+        let submit=document.getElementById("btn")
+        let body=document.querySelector("body")
+
+        checkbox.addEventListener("change",()=>{
+           if(checkbox.checked){
+            message.innerHTML="Checkbox is Checked"
+            submit.disabled=false
+           }
+           else{
+            message.innerHTML="Checkbox is UnChecked"
+            btn.disabled=true
+           }
+        })
+        submit.addEventListener("click",()=>{
+            alert("Thank You,Your Information Saved successfully.")
+            body.style.display="none"
+        })
+    </script>
+</body>
+</html>

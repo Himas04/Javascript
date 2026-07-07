@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task12</title>
+</head>
+<body>
+    <input id="para" type="text" placeholder="Enter Something......">
+    <br>
+
+    <button onclick="countCharacter()">Count Character</button>
+    <h2 id="output"></h2>
+
+    <script>
+        function countCharacter(){
+            let character=document.getElementById("para").value
+            let count=character.length
+            
+            document.getElementById("output").textContent= "Characters:" + count
+        }
+    </script>
+</body>
+</html>
